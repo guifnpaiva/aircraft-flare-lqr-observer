@@ -20,7 +20,7 @@ This project designs, analyzes, and simulates a feedback controller for the fina
 The state vector is:
 
 ```text
-x = [q, Delta theta, h_dot, h]^T
+x = [q,  Δθ,  ḣ,  h]ᵀ
 ```
 
 where `q` is pitch rate, `Delta theta` is pitch-angle variation, `h_dot` is climb rate, and `h` is altitude. The control input is the elevator deflection:
@@ -32,7 +32,7 @@ u = Δδ  (elevator deflection increment from trim)
 The continuous-time dynamics are:
 
 ```text
-x_dot = A x + B u
+ẋ = A x + B u
 ```
 
 with:
@@ -52,8 +52,8 @@ B = [-2.375
 The desired landing flare altitude is:
 
 ```text
-h_d(t) = 100 exp(-t/5),  0 <= t <= 15
-h_d(t) = 20 - t,         t > 15
+h_d(t) = 100 · exp(-t/5),  0 ≤ t ≤ 15
+h_d(t) = 20 - t,           t > 15
 ```
 
 ## Control Law
@@ -61,13 +61,13 @@ h_d(t) = 20 - t,         t > 15
 The implemented controller follows:
 
 ```text
-u = -K1 x1 - K2 x2 - K3 (x3 - h_dot_d) - K4 (x4 - h_d)
+u = -K₁x₁ - K₂x₂ - K₃(x₃ - ḣ_d) - K₄(x₄ - h_d)
 ```
 
 The LQR design uses:
 
 ```text
-Q = diag([1.6^2, 1.6^2, 1e-4, 1e-5])
+Q = diag([1.6², 1.6², 1e-4, 1e-5])
 R = 1
 ```
 
@@ -142,5 +142,5 @@ The Live Script generates the continuous-time responses, observer comparisons, N
 - A reduced-order observer recovers the unmeasured climb-rate state, but zero initialization introduces a visible transient in the early phase of the maneuver.
 - Initializing the observer with an estimate derived from the pitch angle substantially eliminates that transient.
 - Nichols plots for full-state feedback and observer-based feedback nearly overlap, consistent with the separation principle.
-- Equivalent delay analysis on the Nichols chart justifies `Ts = 0.2 s` as the sampling period — fast enough relative to the dominant dynamics while preserving acceptable gain and phase margins.
+- Equivalent delay analysis on the Nichols chart justifies `Ts = 0.2 s` as the sampling period, fast enough relative to the dominant dynamics while preserving acceptable gain and phase margins.
 - The discretized Simulink simulation confirms that continuous and discrete responses are nearly indistinguishable at the chosen sampling rate.
