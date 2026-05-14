@@ -1,7 +1,7 @@
 # Aircraft Landing Flare Control with LQR and Reduced-Order Observer
 
-![MATLAB](https://img.shields.io/badge/MATLAB-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
-![Simulink](https://img.shields.io/badge/Simulink-0076A8?style=for-the-badge&logo=mathworks&logoColor=white)
+![MATLAB](https://img.shields.io/badge/MATLAB-E16A2B?style=for-the-badge&logo=mathworks&logoColor=white)
+![Simulink](https://img.shields.io/badge/Simulink-E16A2B?style=for-the-badge&logo=mathworks&logoColor=white)
 ![Control Systems](https://img.shields.io/badge/Control%20Systems-111111?style=for-the-badge)
 ![LQR](https://img.shields.io/badge/LQR-111111?style=for-the-badge)
 ![Academic Project](https://img.shields.io/badge/Academic%20Project-111111?style=for-the-badge)
